@@ -2,9 +2,14 @@
     session_start();
     require_once("../controleur/leControleur.php");
     $unControleur = new leControleur("localhost","dm_octobre","root","");
-    if(isset($_POST["sinscrire"]))
-    {
-        $unControleur->insertUser($_POST);
+    $id = 1;
+      if(isset($_POST["sinscrire"]))
+      {
+         $envoi = array ("nom"=>$_POST['nom'], 
+         "prenom"=>$_POST['prenom'],
+         "id_maternelle"=>$id
+        );
+         $unControleur->insert("enfant",$envoi);
         if(isset($resultat['nom']))
         {
             $_SESSION['nom'] = $resultat['nom'];
