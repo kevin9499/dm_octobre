@@ -31,215 +31,98 @@ public function verifConnexion($login, $mdp)
     }
 }
 
-
-
-
-public function selectUser ()
-{
-    if($this->unPdo != null)
+public function insert($table, array $tab)
+ {
+    if ($this->unPdo == null)
+     {
+        return;
+     }
+    //Template
+    $insert_format = 'insert into %s (%s) values (%s)';
+    //rendre ces variables en tableau
+    $colonnes = $parametres = $valeurs = [];
+    //Remplire les champs
+    foreach ($tab as $colonne => $valeur)
     {
-        $requete = "select * from utilisateur ;";
-        $select = $this->unPdo->prepare($requete);
-        $select->execute ();
-        $resultats = $select->fetchAll();
-        return $resultats;
+        $parametre = ':' . $colonne;
+        //echo $colonne ;
+        $colonnes[] = $colonne;
+        $parametres[] = $parametre;
+        $valeurs[$parametre] = $valeur;
     }
+    //ordonner 
+    $sql = sprintf(
+            $insert_format,
+            $table,
+            implode($colonnes, ', '),
+            implode($parametres, ', '));
+            $statement = $this->unPdo->prepare($sql);
+            $statement->execute($valeurs);
+           // echo $sql;
+           //var_dump( $valeurs);
 }
-public function insertUser ($tab)
-    {
-        if($this->unPdo != null)
-            {
-                $requete = "insert into utilisateur values (null, :login, :mdp, :nom, :prenom);";
-                $donnees = array(":login"=>$tab['login'],
-                                 ":mdp"=>$tab['mdp'],
-                                 ":nom"=>$tab['nom'],
-                                 ":prenom"=>$tab['prenom']);
-                $insert = $this->unPdo->prepare ($requete);
-                $insert->execute($donnees);
-            }
-    }
-public function deleteUser ($id_user)
-{
-    if ($this->unPdo != null)
-    {
-            $requete = "delete from utilisateur where iduser= :iduser;"; 
-            $donnees = array(":iduser"=>$id_user);
-            $delete = $this->unPdo->prepare($requete);
-            $delete->execute($donnees);
-    }
-}
-
 
 /*
-
-
-                               MESSAGE
-
-
+    Delete
 */
-public function selectMessage()
+
+public function delete($table, array $tab)
 {
-    if($this->unPdo != null)
+    if ($this->unPdo == null)
     {
-        //requete
-        $requete = "select * from message;";
-        //preparation  de la requete avant exec
-        $select = $this->unPdo->prepare ($requete);
-        //execution requete
-        $select->execute();
-        //extraction donnée
-        $resultats = $select->fetchAll();
-        return $resultats;
+        return;
     }
-}
-public function insertMessage($tab)
-{
-    if($this->unPdo!=null)
+
+    $delete_format = 'delete from %s where (%s) = (%s)';
+    $colonnes = $parametres = $valeurs = [];
+    foreach ($tab as $colonne => $valeur)
     {
-        $requete ="insert into message values(null, :text, :date_mess)";
-        $donnees = array(":text"=>$tab['text'],":date_mess"=>$tab['date_mess']);
-        $insert = $this->unPdo->prepare($requete);
-        $insert->execute($donnees);
+        $parametre = ':' . $colonne;
+        //echo $colonne ;
+        $colonnes[] = $colonne;
+        $parametres[] = $parametre;
+        $valeurs[$parametre] = $valeur;
     }
+    $sql = sprintf(
+            $delete_format,
+            $table,
+            implode($colonnes, ', '),
+            implode($parametres, ', '));
+    //echo $sql;
+    $statement = $this->unPdo->prepare($sql);
+    $statement->execute($valeurs);
 }
 
-public function deleteMessage($id_mess)
-{
-    if($this->unPdo!=null)
-    {
-        $requete ="delete from message where id_mess = :id_mess;";
-        $donnees = array(":id_mess"=>$id_mess);
-        $delete = $this->unPdo->prepare($requete);
-        $delete->execute($donnees);
-    }
-}
 /*
-
-
-                             COMMENTAIRE
-
-
+    Updaute
 */
-public function selectCommentaire()
+public function update($table, array $tab, array $id)
 {
-    if($this->unPdo != null)
+    if ($this->unPdo == null)
     {
-        //requete
-        $requete = "select * from commentaire;";
-        //preparation  de la requete avant exec
-        $select = $this->unPdo->prepare ($requete);
-        //execution requete
-        $select->execute();
-        //extraction donnée
-        $resultats = $select->fetchAll();
-        return $resultats;
+        return;
     }
-}
-public function insertCommentaire($tab)
-{
-    if($this->unPdo!=null)
-    {
-        $requete ="insert into commentaire values(null, :text, :note)";
-        $donnees = array(":text"=>$tab['text'],":note"=>$tab['note']);
-        $insert = $this->unPdo->prepare($requete);
-        $insert->execute($donnees);
-    }
-}
-public function deleteCommentaire($id_com)
-{
-    if($this->unPdo!=null)
-    {
-        $requete ="delete from commentaire where id_com = :id_com;";
-        $donnees = array(":id_com"=>$id_com);
-        $delete = $this->unPdo->prepare($requete);
-        $delete->execute($donnees);
-    }
-}
-/*
 
-
-                              PRODUIT
-
-
-*/
-public function selectProduit()
-{
-    if($this->unPdo != null)
+    $update_format = 'update %s set (%s) = (%s) where %s = %s';
+    $colonnes = $parametres = $valeurs = [];
+    foreach ($tab as $colonne => $valeur)
     {
-        //requete
-        $requete = "select * from produit;";
-        //preparation  de la requete avant exec
-        $select = $this->unPdo->prepare ($requete);
-        //execution requete
-        $select->execute();
-        //extraction donnée
-        $resultats = $select->fetchAll();
-        return $resultats;
+        $parametre = ':' . $colonne;
+        //echo $colonne ;
+        $colonnes[] = $colonne;
+        $parametres[] = $parametre;
+        $valeurs[$parametre] = $valeur;
     }
-}
-public function insertProduit($tab)
-{
-    if($this->unPdo!=null)
-    {
-        $requete ="insert into produit values(null, :designation, :caracteristique, :prix)";
-        $donnees = array(":designation"=>$tab['designation'],":caracteristque"=>$tab['carateristique'],":prix"=>$tab['prix']);
-        $insert = $this->unPdo->prepare($requete);
-        $insert->execute($donnees);
-    }
+    $sql = sprintf(
+            $update_format,
+            $table,
+            implode($colonnes, ', '),
+            implode($parametres, ', '),
+            $id);
+    //echo $sql;
+    $statement = $this->unPdo->prepare($sql);
+    $statement->execute($valeurs);
 }
 
-public function deleteProduit($id_produit)
-{
-    if($this->unPdo!=null)
-    {
-        $requete ="delete from produit where id_produit = :id_produit;";
-        $donnees = array(":id_produit"=>$id_produit);
-        $delete = $this->unPdo->prepare($requete);
-        $delete->execute($donnees);
-    }
-}
-/*
-
-
-                             EVENT
-
-
-*/
-public function selectEvent()
-{
-    if($this->unPdo != null)
-    {
-        //requete
-        $requete = "select * from event;";
-        //preparation  de la requete avant exec
-        $select = $this->unPdo->prepare ($requete);
-        //execution requete
-        $select->execute();
-        //extraction donnée
-        $resultats = $select->fetchAll();
-        return $resultats;
-    }
-}
-public function insertEvent($tab)
-{
-    if($this->unPdo!=null)
-    {
-        $requete ="insert into event values(null, :designation, :date_creation, :date_debut, :description)";
-        $donnees = array(":designation"=>$tab['designation'],":date_creation"=>$tab['date_creation'],":date_debut"=>$tab['date_debut'],":description"=>$tab['description']);
-        $insert = $this->unPdo->prepare($requete);
-        $insert->execute($donnees);
-    }
-}
-
-public function deleteEvent($id_event)
-{
-    if($this->unPdo!=null)
-    {
-        $requete ="delete from event where id_event = :id_event;";
-        $donnees = array(":id_event"=>$id_event);
-        $delete = $this->unPdo->prepare($requete);
-        $delete->execute($donnees);
-    }
-}
 }
 ?>
