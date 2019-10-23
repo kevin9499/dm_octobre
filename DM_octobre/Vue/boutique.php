@@ -3,18 +3,20 @@ session_start();
 if(isset($_SESSION['nom']))
     {
       $connec ='Deconnexion';
-      $linkCon ='vue/deconnexion.php';
+      $linkCon ='deconnexion.php';
       $sign = '';
       $signe = '';
       $event = 'vue/evenement.php';
+      $objet = 'Mes objets';
     }
     else
     {
-      $linkCon ='vue/connexion.php';
+      $linkCon ='connexion.php';
       $connec ='Connexion';
-      $sign = 'vue/inscription.php';
+      $sign = 'inscription.php';
       $signe = 'Inscription';
-      $event = 'vue/vconnexion.php';
+      $event = 'connexion.php';
+      $objet = '';
     }
 ?>
 <!DOCTYPE html>
@@ -25,16 +27,16 @@ if(isset($_SESSION['nom']))
   <meta name="description" content="">
   <meta name="author" content="">
   <title>DM</title>
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/heroic-features.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/bootstrap-theme.css" media="screen" >
-  <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../css/heroic-features.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/bootstrap-theme.css" media="screen" >
+  <link rel="stylesheet" href="../css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/main.css">
 
 
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">DM maternelle</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,7 +45,7 @@ if(isset($_SESSION['nom']))
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.php">Accueil
+            <a class="nav-link" href="../index.php">Accueil
               <span class="sr-only"></span>
             </a>
           </li>
@@ -52,6 +54,13 @@ if(isset($_SESSION['nom']))
           </li>
           <li class="nav-item">
             <a class="nav-link" href="boutique.php">Boutique</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="objet.php">Les objets</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="selfobjet"><?php echo $objet; ?></a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo $linkCon; ?>"><?php echo $connec; ?></a>
             </li>

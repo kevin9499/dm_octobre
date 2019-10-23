@@ -123,6 +123,17 @@ public function update($table, array $tab, array $id)
     $statement = $this->unPdo->prepare($sql);
     $statement->execute($valeurs);
 }
+public function selectObjet()
+{
+    if($this->unPdo!=null)
+    {
+        $requete = "select * from AllObjet;";
+        $select = $this->unPdo->prepare($requete);
+        $select->execute();
+        $result = $select->fetchAll();
+        return $result;
+    }
+}
 
 }
 ?>

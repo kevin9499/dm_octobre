@@ -7,6 +7,7 @@ if(isset($_SESSION['nom']))
       $sign = '';
       $signe = '';
       $event = 'vue/evenement.php';
+      $objet = 'Mes objets';
     }
     else
     {
@@ -14,7 +15,8 @@ if(isset($_SESSION['nom']))
       $connec ='Connexion';
       $sign = 'vue/inscription.php';
       $signe = 'Inscription';
-      $event = 'vue/vconnexion.php';
+      $event = 'vue/connexion.php';
+      $objet = '';
     }
 ?>
 <!DOCTYPE html>
@@ -48,10 +50,17 @@ if(isset($_SESSION['nom']))
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="troc.php">Troc</a>
+            <a class="nav-link" href="vue/troc.php">Troc</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="boutique.php">Boutique</a>
+            <a class="nav-link" href="vue/boutique.php">Boutique</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="vue/objet.php">Les objets</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="vue/selfobjet"><?php echo $objet; ?></a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo $linkCon; ?>"><?php echo $connec; ?></a>
             </li>

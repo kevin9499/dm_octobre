@@ -1,5 +1,23 @@
 <?php
     session_start();
+    if(isset($_SESSION['nom']))
+    {
+      $connec ='Deconnexion';
+      $linkCon ='deconnexion.php';
+      $sign = '';
+      $signe = '';
+      $event = 'vue/evenement.php';
+      $objet = 'Mes objets';
+    }
+    else
+    {
+      $linkCon ='connexion.php';
+      $connec ='Connexion';
+      $sign = 'inscription.php';
+      $signe = 'Inscription';
+      $event = 'connexion.php';
+      $objet = '';
+    }
     require_once("../controleur/leControleur.php");
     $unControleur = new leControleur("localhost","dm_octobre","root","");
     $id = 1;
@@ -12,6 +30,7 @@
          $unControleur->insert("enfant",$envoi);
         if(isset($resultat['nom']))
         {
+            $_SESSION['id_enfant'] = $resultat['id_enfant'];
             $_SESSION['nom'] = $resultat['nom'];
             $_SESSION['prenom'] = $resultat['prenom'];
 
@@ -39,10 +58,9 @@
 
 </head>
 <body>
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">TD mai</a>
+      <a class="navbar-brand" href="#">DM maternelle</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -54,13 +72,23 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="troc.php">Troc</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="boutique.php">Boutique</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Forum</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">Connexion</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="objet.php">Les objets</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="selfobjet"><?php echo $objet; ?></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo $linkCon; ?>"><?php echo $connec; ?></a>
+            </li>
+
+          <li class="nav-item" ><a class="nav-link" href="<?php echo $sign; ?>"><?php echo $signe; ?></a></li>
+
           </li>
         </ul>
       </div>

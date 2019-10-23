@@ -14,6 +14,10 @@ class leControleur
         // on peu controler les donnees 
         return $this->unModele->verifConnexion($login, $mdp);
     }
+    public function selectObjet()
+    {
+      return $this->unModele->selectObjet();
+    }
 
     public function insert($table, $tab) {
         $this->unModele->insert($table, $tab);
