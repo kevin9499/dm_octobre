@@ -158,6 +158,18 @@ public function selectCout($id_objet)
         return $result;
     }
 }
+public function selectPoint($id_enfant)
+{
+    if($this->unPdo!=null)
+    {
+        $requete = "select point from enfant where id_enfant = :id_enfant;";
+        $donnees = array(":id_enfant"=>$id_enfant);                    
+        $select = $this->unPdo->prepare($requete);
+        $select->execute($donnees);
+        $result = $select->fetch();
+        return $result;
+    }
+}
 public function selectVente()
 {
     if($this->unPdo!=null)
@@ -202,14 +214,11 @@ public function updateObjet2($tab, $id)
             $donnees = array(":type"=>$tab['type'],":id_enfant"=>$_SESSION['id_enfant'],":id_objet"=>$id);
             $insert = $this->unPdo->prepare($requete);
             $insert->execute($donnees);
-            $donnees = array(":id_objet"=>$tab['id_objet'],":id_enfant"=>$id);
-            $insert2 = $this->unPdo->prepare($requete);
-            $insert2->execute($donnees);
             $requete ="update enfant set point = :point  where id_enfant = :id_enfant";
-            $donnees = array(":point"=>-$tab['point'],":id_enfant"=>$_SESSION['id_enfant']);
+            $donnees = array(":point"=>":point"-$tab['point'],":id_enfant"=>$_SESSION['id_enfant']);
             $insert3 = $this->unPdo->prepare($requete);
             $insert3->execute($donnees);
-            $donnees = array(":point"=>+$tab['point'],":id_enfant"=>$id);
+            $donnees = array(":point"=>":point"+$tab['point'],":id_enfant"=>$id);
             $insert4 = $this->unPdo->prepare($requete);
             $insert4->execute($donnees);
 
