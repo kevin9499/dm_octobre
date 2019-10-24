@@ -56,7 +56,7 @@ else
           </li>
           <li class="nav-item">
             <a class="nav-link" href="boutique.php">Boutique</a>
-          </li>
+          </li>id
             <li class="nav-item">
             <a class="nav-link" href="objet.php">Les objets</a>
             </li>
@@ -86,13 +86,21 @@ else
   $result = $unControleur->selectSelfObjet();
   $cout = $unControleur->selectCout($id_objet);
   $point = $unControleur->selectPoint($id_enfant);
-
+  $id = $_SESSION['id_enfant'];
+  $point2 = $unControleur->selectPoint($id);
 
   require_once('formVente.php');
   if(isset($_POST['confirmer']))
   {
+      if($id >= $cout)
+      {
       $unControleur->updateObjet2($_POST,$id_objet);
       $unControleur->updateObjet2($_POST,$id_enfant);
+      }
+      else
+      {
+          echo " Achat impossible";
+      }
   }
 
 

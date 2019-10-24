@@ -5,9 +5,13 @@
     
         <input type="hidden" name="point" value=" <?php echo $point['point'];?>">        
        <input type="hidden" name="cout" value=" <?php echo $cout['point'];?>">
+       <input type="hidden" name="point2" value=" <?php echo $point2['point'];?>">
+
 
         <?php echo $point['point'];?>
         <?php echo $cout['point'];?>
+        <?php echo $point2['point'];?>
+
         </tr>
     <tr>
     <tr><td>Type de votre nouvelle objet</td>
