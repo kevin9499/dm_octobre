@@ -18,6 +18,32 @@ class leControleur
     {
       return $this->unModele->selectObjet();
     }
+    public function selectVente()
+    {
+      return $this->unModele->selectVente();
+    }
+
+    public function selectSelfObjet()
+    {
+      return $this->unModele->selectSelfObjet();
+    }
+    public function selectCout($id_objet)
+    {
+      return $this->unModele->selectCout($id_objet);
+    }
+
+    public function updateobjet2($tab, $id)
+    {
+      $this->unModele->updateObjet2($tab, $id);
+    }
+    public function updateObjet($tab, $id)
+    {
+      $this->unModele->updateObjet($tab, $id);
+    }
+    public function selectTroc()
+    {
+      return $this->unModele->selectTroc();
+    }
 
     public function insert($table, $tab) {
         $this->unModele->insert($table, $tab);
@@ -25,8 +51,8 @@ class leControleur
       public function delete($table, $tab) {
         $this->unModele->delete($table, $tab);
       }
-      public function update($table, $tab) {
-        $this->unModele->update($table, $tab);
+      public function update($table, $tab, $id) {
+        $this->unModele->update($table, $tab, $id);
       }
 
 }
