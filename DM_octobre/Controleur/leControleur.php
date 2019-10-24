@@ -31,6 +31,11 @@ class leControleur
     {
       return $this->unModele->selectCout($id_objet);
     }
+    public function selectPoint($id)
+    {
+      return $this->unModele->selectPoint($id);
+    }
+
 
     public function updateobjet2($tab, $id)
     {
