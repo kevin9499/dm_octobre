@@ -1,23 +1,25 @@
 <?php
 session_start();
+require_once("../controleur/leControleur.php");
+$unControleur = new leControleur("localhost","dm_octobre","root","");
 if(isset($_SESSION['nom']))
-    {
-      $connec ='Deconnexion';
-      $linkCon ='deconnexion.php';
-      $sign = '';
-      $signe = '';
-      $event = 'vue/evenement.php';
-      $objet = 'Mes objets';
-    }
-    else
-    {
-      $linkCon ='connexion.php';
-      $connec ='Connexion';
-      $sign = 'inscription.php';
-      $signe = 'Inscription';
-      $event = 'connexion.php';
-      $objet = '';
-    }
+{
+  $connec ='Deconnexion';
+  $linkCon ='deconnexion.php';
+  $sign = '';
+  $signe = '';
+  $event = 'vue/evenement.php';
+  $objet = 'Mes objets';
+}
+else
+{
+  $linkCon ='connexion.php';
+  $connec ='Connexion';
+  $sign = 'inscription.php';
+  $signe = 'Inscription';
+  $event = 'connexion.php';
+  $objet = '';
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -36,7 +38,7 @@ if(isset($_SESSION['nom']))
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">DM maternelle</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,12 +56,13 @@ if(isset($_SESSION['nom']))
           </li>
           <li class="nav-item">
             <a class="nav-link" href="boutique.php">Boutique</a>
-            </li>
+          </li>
             <li class="nav-item">
             <a class="nav-link" href="objet.php">Les objets</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="selfobjet"><?php echo $objet; ?></a>
+
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo $linkCon; ?>"><?php echo $connec; ?></a>
@@ -75,63 +78,20 @@ if(isset($_SESSION['nom']))
   <div class="container">
     <header class="jumbotron my-4"><center><img width=" 500"src="image/ecolematernelle.jpg"></center>
     </header>
-    <section id="hotels" class="section-with-bg wow fadeInUp">
-      <div class="container">
-        <div class="section-header">
-          <h2>Lieu</h2>
-          <p>Lieu disponible pour les événements</p>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 col-md-6">
-            <div class="hotel">
-              <div class="hotel-img">
-                <img src="img/hotels/1.jpg" alt="Hotel 1" class="img-fluid" width="500px">
-              </div>
-              <h3><a href="vue/expo.php">Parc des expositions</a></h3>
-              <div class="stars">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-              <p></p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="hotel">
-              <div class="hotel-img">
-                <img src="img/hotels/2.jpg" alt="Hotel 2" class="img-fluid">
-              </div>
-              <h3><a href="vue/vilette.php">La Villette</a></h3>
-              <div class="stars">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-full"></i>
-              </div>
-              <p></p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="hotel">
-              <div class="hotel-img">
-                <img src="img/hotels/3.jpg" alt="Hotel 3" class="img-fluid" width="500px" height="300px" >
-              </div>
-              <h3><a href="vue/pompidou.php">Pompidou</a></h3>
-              <div class="stars">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-              <p></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+
+    <?php
+$result = $unControleur->selectVente();
+require_once("affichagevente.php");
+
+
+ if(isset($_POST['supprimer']) || isset($_POST['supprimer']))
+ {
+  $id_objet = $GET['id_objet'];
+ }
+
+ 
+?>
+    
   <footer class="foot">
     <div class="container">
       <p class="m-0 text-center text-white footer1">Copyright &copy;TD 2019</p>

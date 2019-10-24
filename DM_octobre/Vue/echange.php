@@ -80,13 +80,21 @@ else
     </header>
 
     <?php
-$result = $unControleur->selectTroc();
-require_once("affichageTroc.php");
 
- if(isset($_POST['supprimer']) || isset($_POST['supprimer']))
- {
-  $id_objet = $GET['id_objet'];
- }
+  $id_objet = $_GET['id_objet'];
+  $id_enfant = $_GET['id_enfant'];
+  $result = $unControleur->selectSelfObjet();
+
+
+
+  require_once('formEchange.php');
+    if(isset($_POST['echanger']))
+    {
+        $unControleur->updateObjet($_POST,$id_objet);
+       $unControleur->updateObjet($_POST,$id_enfant);
+    }
+
+
 
  
 ?>
