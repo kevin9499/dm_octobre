@@ -2,11 +2,12 @@
 <form class="form-group" action="" method="post">
 <table>
 <tr>
-            <td>cout
-             <?php   foreach($cout as $unCout){
+    
+        <input type="hidden" name="point" value=" <?php echo $point['point'];?>">        
+       <input type="hidden" name="cout" value=" <?php echo $cout['point'];?>">
 
-           echo'<input type="text" name="point" value="'.$unCout['point'].'"></td>';
-        }?>
+        <?php echo $point['point'];?>
+        <?php echo $cout['point'];?>
         </tr>
     <tr>
     <tr><td>Type de votre nouvelle objet</td>

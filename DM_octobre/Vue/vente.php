@@ -85,9 +85,7 @@ else
   $id_enfant = $_GET['id_enfant'];
   $result = $unControleur->selectSelfObjet();
   $cout = $unControleur->selectCout($id_objet);
-  
-
-
+  $point = $unControleur->selectPoint($id_enfant);
 
 
   require_once('formVente.php');
