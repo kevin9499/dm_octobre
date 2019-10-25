@@ -225,5 +225,16 @@ public function updateObjet2($tab, $id)
     }
 }
 
+public function updateO($tab, $id_objet)
+{
+    if($this->unPdo!=null)
+    {
+            $requete ="update objet set libelle = :libelle, type = :type, point = :point where id_objet = :id_objet;";
+            $donnees = array(":libelle"=>$tab['libelle'],":type"=>$tab['type'],":point"=>$tab['point'],":id_objet"=>$id_objet);
+            $insert = $this->unPdo->prepare($requete);
+            $insert->execute($donnees);
+    }
+}
+
 }
 ?>
