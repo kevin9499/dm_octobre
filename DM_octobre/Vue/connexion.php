@@ -52,18 +52,21 @@
               <span class="sr-only"></span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="troc.php">Troc</a>
+      <?php    if(isset($_SESSION['nom']))
+    {
+          echo"<li class='nav-item'>
+            <a class='nav-link' href='troc.php'>Troc</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="boutique.php">Boutique</a>
+          <li class='nav-item'>
+            <a class='nav-link' href='boutique.php'>Boutique</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link" href="objet.php">Les objets</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="selfobjet"><?php echo $objet; ?></a>
 
+            <li class='nav-item'>
+            <a class='nav-link' href='selfobjet'>"; echo $objet."</a>
+            </li>";
+    }?>
+                <li class='nav-item'>
+            <a class='nav-link' href='objet.php'>Les objets</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo $linkCon; ?>"><?php echo $connec; ?></a>

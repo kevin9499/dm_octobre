@@ -7,19 +7,7 @@
 //$lesEnfants = $unControleur->selectEnfant();
 ?>
 <?php
-require_once("formObjet.php");
-if(isset($_POST['vendre']))
-{
-    $envoi = array ("libelle"=>$_POST['libelle'], 
-    "point"=>$_POST['point'],
-    "id_enfant"=>$_SESSION['id_enfant']
-   );
-    $unControleur->insert("objet",$envoi);
-}
- if(isset($_POST['supprimer']) || isset($_POST['supprimer']))
- {
-  $id_objet = $GET['id_objet'];
- }
+
 
 $result = $unControleur->selectObjet();
 //$resultSelf= $unControleur->calculeSelfObjet($id);

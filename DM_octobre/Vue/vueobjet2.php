@@ -8,10 +8,29 @@
 ?>
 
 <?php
- if(isset($_POST['supprimer']) || isset($_POST['supprimer']))
+require_once("formObjet.php");
+if(isset($_POST['vendre']))
+{
+    $envoi = array ("libelle"=>$_POST['libelle'], 
+    "point"=>$_POST['point'],
+    "type"=>$_POST['type'],
+    "id_enfant"=>$_SESSION['id_enfant']
+   );
+    $unControleur->insert("objet",$envoi);
+}
+ if(isset($_POST['Supprimer']))
  {
-  $id_objet = $GET['id_objet'];
+  $id_objet = $_POST['hidden'];
+  $envoi = array ( "id_objet"=>$id_objet);
+  $unControleur->delete("objet",$envoi);
  }
+ if(isset($_POST['Modifier']))
+ {
+     $id_objet = $_GET['id_objet'];    
+     $unControleur->updateO($_POST,$id_objet);
+ }
+
+
 
 $result = $unControleur->selectObjet();
 //$resultSelf= $unControleur->calculeSelfObjet($id);

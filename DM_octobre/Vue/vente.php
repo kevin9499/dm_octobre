@@ -41,7 +41,7 @@ else
 
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">DM maternelle</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,18 +54,21 @@ else
               <span class="sr-only"></span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="troc.php">Troc</a>
+      <?php    if(isset($_SESSION['nom']))
+    {
+          echo"<li class='nav-item'>
+            <a class='nav-link' href='troc.php'>Troc</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="boutique.php">Boutique</a>
-          </li>id
-            <li class="nav-item">
-            <a class="nav-link" href="objet.php">Les objets</a>
+          <li class='nav-item'>
+            <a class='nav-link' href='boutique.php'>Boutique</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link" href="selfobjet"><?php echo $objet; ?></a>
 
+            <li class='nav-item'>
+            <a class='nav-link' href='selfobjet'>"; echo $objet."</a>
+            </li>";
+    }?>
+                <li class='nav-item'>
+            <a class='nav-link' href='objet.php'>Les objets</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo $linkCon; ?>"><?php echo $connec; ?></a>
@@ -109,19 +112,22 @@ else
                   <div class="thank-you-pop">
                       <img src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" alt="">
                       <h1>Merci!</h1>
-                      <p>Votre message bien été pris en compte, vous recevrez une réponse d\'ici 2 jours !</p>
+                      <p>Votre achat à bien été pris en compte!</p>
                   </div> 
               </div>
           </div>
       </div>
   </div>
-';?>
+';
+
+?>
 
 <script>
 function closeModal()
 {
 var modal = document.getElementById("ignismyModal");
 modal.style.display = "none";
+document.location.href="../index.php";
 }
 </script>
 <style> 
@@ -186,7 +192,7 @@ border:0px;
    <?php   }
       else
       {
-          echo " Achat impossible";
+        echo "<script> alert('Echange impossible vous ne possedez pas d objet');</script>";
       }
   }
 ?>
