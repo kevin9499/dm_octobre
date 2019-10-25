@@ -60,5 +60,10 @@ class leControleur
         $this->unModele->update($table, $tab, $id);
       }
 
+      public function updateO($tab, $id_objet)
+      {
+        $this->unModele->updateO($tab, $id_objet);
+
+      }
 }
 ?>
