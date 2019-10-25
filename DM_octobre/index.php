@@ -36,7 +36,7 @@ if(isset($_SESSION['nom']))
 
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">DM maternelle</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,21 +45,25 @@ if(isset($_SESSION['nom']))
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.php">Accueil
+            <a class="nav-link" href="../index.php">Accueil
               <span class="sr-only"></span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="vue/troc.php">Troc</a>
+      <?php    if(isset($_SESSION['nom']))
+    {
+          echo"<li class='nav-item'>
+            <a class='nav-link' href='vue/troc.php'>Troc</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="vue/boutique.php">Boutique</a>
+          <li class='nav-item'>
+            <a class='nav-link' href='vue/boutique.php'>Boutique</a>
             </li>
-            <li class="nav-item">
-            <a class="nav-link" href="vue/objet.php">Les objets</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="vue/selfobjet"><?php echo $objet; ?></a>
+
+            <li class='nav-item'>
+            <a class='nav-link' href='selfobjet'>"; echo $objet."</a>
+            </li>";
+    }?>
+                <li class='nav-item'>
+            <a class='nav-link' href='vue/objet.php'>Les objets</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo $linkCon; ?>"><?php echo $connec; ?></a>
@@ -75,63 +79,6 @@ if(isset($_SESSION['nom']))
   <div class="container">
     <header class="jumbotron my-4"><center><img width=" 500"src="image/ecolematernelle.jpg"></center>
     </header>
-    <section id="hotels" class="section-with-bg wow fadeInUp">
-      <div class="container">
-        <div class="section-header">
-          <h2>Lieu</h2>
-          <p>Lieu disponible pour les événements</p>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 col-md-6">
-            <div class="hotel">
-              <div class="hotel-img">
-                <img src="img/hotels/1.jpg" alt="Hotel 1" class="img-fluid" width="500px">
-              </div>
-              <h3><a href="vue/expo.php">Parc des expositions</a></h3>
-              <div class="stars">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-              <p></p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="hotel">
-              <div class="hotel-img">
-                <img src="img/hotels/2.jpg" alt="Hotel 2" class="img-fluid">
-              </div>
-              <h3><a href="vue/vilette.php">La Villette</a></h3>
-              <div class="stars">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-full"></i>
-              </div>
-              <p></p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="hotel">
-              <div class="hotel-img">
-                <img src="img/hotels/3.jpg" alt="Hotel 3" class="img-fluid" width="500px" height="300px" >
-              </div>
-              <h3><a href="vue/pompidou.php">Pompidou</a></h3>
-              <div class="stars">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-              <p></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   <footer class="foot">
     <div class="container">
       <p class="m-0 text-center text-white footer1">Copyright &copy;TD 2019</p>
