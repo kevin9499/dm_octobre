@@ -79,7 +79,44 @@ if(isset($_SESSION['nom']))
     </div>
   </nav>
   <div class="container">
-    <header class="jumbotron my-4"><center><img width=" 500"src="image/ecolematernelle.jpg"></center>
+    <header class="jumbotron my-4"><center>
+    <?php
+    if($_SESSION['id_enfant'] == 1)
+    {
+    echo "<img width=' 500' src='../image/enfant1.jpg'>";
+    }
+    ?>
+    <?php
+        if($_SESSION['id_enfant'] == 2)
+        {
+    echo "<img width=' 500' src='../image/enfant2.jpg'>";
+        }
+    ?>
+    <?php
+        if($_SESSION['id_enfant'] == 3)
+        {
+    echo "<img width=' 500' src='../image/enfant3.jpg'>";
+        }
+    ?>
+    <?php
+        if($_SESSION['id_enfant'] == 7)
+        {
+    echo "<img width=' 500' src='../image/enfant4.jpg'>";
+        }
+    ?>
+    <?php
+        if($_SESSION['id_enfant'] == 8)
+        {
+    echo "<img width=' 500' src='../image/enfant5.jpg'>";
+        }
+        if($_SESSION['id_enfant'] == 9)
+        {
+    echo "<img width=' 500' src='../image/enfant6.jpg'>";
+        }
+    ?>
+    </center>
+    </header>
+    <header class="jumbotron my-4"><center><h1>Ajouter objet</h1></center>
     </header>
     <center>
 
@@ -91,11 +128,7 @@ if(isset($_SESSION['nom']))
 
    </center>
 
-  <footer class="foot">
-    <div class="container">
-      <p class="m-0 text-center text-white footer1">Copyright &copy;TD 2019</p>
-    </div>
-  </footer>
+
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="js/headroom.min.js"></script>
   <script src="js/jQuery.headroom.min.js"></script>

@@ -79,23 +79,15 @@ if(isset($_SESSION['nom']))
     </div>
   </nav>
   <div class="container">
-    <header class="jumbotron my-4"><center><img width=" 500"src="image/ecolematernelle.jpg"></center>
+    <header class="jumbotron my-4"><center><img width=" 500"src="../image/nounourse.jpg"></center>
     </header>
-    <center>
-
-   
+    <center><h1>Liste des objets</h1></center>
    <div class="col-sm-12">
   <?php require_once("vueobjet.php");?>
    </div>
 
 
    </center>
-
-  <footer class="foot">
-    <div class="container">
-      <p class="m-0 text-center text-white footer1">Copyright &copy;TD 2019</p>
-    </div>
-  </footer>
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="js/headroom.min.js"></script>
   <script src="js/jQuery.headroom.min.js"></script>

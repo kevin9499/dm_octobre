@@ -82,7 +82,7 @@ else
     </div>
   </nav>
   <div class="container">
-    <header class="jumbotron my-4"><center><img width=" 500"src="image/ecolematernelle.jpg"></center>
+    <header class="jumbotron my-4"><center><img width=" 500"src="../image/objet.jpg"></center>
     </header>
 
     <?php

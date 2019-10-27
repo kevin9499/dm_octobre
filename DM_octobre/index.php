@@ -45,7 +45,7 @@ if(isset($_SESSION['nom']))
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="../index.php">Accueil
+            <a class="nav-link" href="">Accueil
               <span class="sr-only"></span>
             </a>
           </li>
@@ -59,7 +59,7 @@ if(isset($_SESSION['nom']))
             </li>
 
             <li class='nav-item'>
-            <a class='nav-link' href='selfobjet'>"; echo $objet."</a>
+            <a class='nav-link' href='vue/selfobjet.php'>"; echo $objet."</a>
             </li>";
     }?>
                 <li class='nav-item'>
@@ -79,11 +79,11 @@ if(isset($_SESSION['nom']))
   <div class="container">
     <header class="jumbotron my-4"><center><img width=" 500"src="image/ecolematernelle.jpg"></center>
     </header>
-  <footer class="foot">
-    <div class="container">
-      <p class="m-0 text-center text-white footer1">Copyright &copy;TD 2019</p>
-    </div>
-  </footer>
+    <center><h1>Ecole maternelle</h1></center>
+    <header class="jumbotron my-4"><center><h5>Ce site internet permet de vendre via des points ou d'echanger ces objets "troc".
+    Les enfants s'inscrivent et upload une photos. Une fois connecté ils peuvent ajouter des objets pour les vendre ou les échanger.
+    </h5></center>
+    </header>
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="js/headroom.min.js"></script>
   <script src="js/jQuery.headroom.min.js"></script>

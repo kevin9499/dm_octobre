@@ -25,9 +25,17 @@
       {
          $envoi = array ("nom"=>$_POST['nom'], 
          "prenom"=>$_POST['prenom'],
+         "designation"=>$_POST['designation'],
          "id_maternelle"=>$id
         );
          $unControleur->insert("enfant",$envoi);
+
+         $image1 = $_POST["designation"]."1";
+         $image_name = $_FILES['myimage']['name'];
+        $image_type = $_FILES['myimage']['type'];
+        $image_size = $_FILES['myimage']['size'];
+        $image_tmp_name1= $_FILES['myimage']['tmp_name'];
+         move_uploaded_file($image_tmp_name1,"../image/$image1.jpg");
         if(isset($resultat['nom']))
         {
             $_SESSION['id_enfant'] = $resultat['id_enfant'];
@@ -113,12 +121,6 @@
 			</div> 		
 		</div>
 	</div>
-
-  <footer class="foot">
-    <div class="container">
-      <p class="m-0 text-center text-white footer1">Copyright &copy;TD 2019</p>
-    </div>
-  </footer>
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="js/headroom.min.js"></script>
   <script src="js/jQuery.headroom.min.js"></script>

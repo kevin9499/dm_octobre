@@ -34,6 +34,7 @@ if(isset($_POST['vendre']))
 
 $result = $unControleur->selectObjet();
 //$resultSelf= $unControleur->calculeSelfObjet($id);
+echo"<h1>Mes objets</h1>";
 require_once("affichageObjet.php");
 
  

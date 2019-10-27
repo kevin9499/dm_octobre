@@ -101,7 +101,7 @@
                         $_SESSION['id_enfant'] = $resultat['id_enfant'];
                         $_SESSION['nom'] = $resultat['nom'];
                         $_SESSION['prenom'] = $resultat['prenom'];
-                        header('location: ../index.php');
+                        header('location: ../vue/selfobjet.php');
                     }
                     else
                     {
@@ -115,11 +115,6 @@
 		</div>
 	</div>
 
-  <footer class="foot">
-    <div class="container">
-      <p class="m-0 text-center text-white footer1">Copyright &copy;TD 2019</p>
-    </div>
-  </footer>
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="js/headroom.min.js"></script>
   <script src="js/jQuery.headroom.min.js"></script>
